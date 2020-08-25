@@ -19,14 +19,14 @@ class Page {
     ];
 
     # a classe recebe já pronto os dados pra inserir na pagina
-    public function __construct($opts = array()){
+    public function __construct($opts = array(), $tpl_dir = "/views/"){
 
         # array_merge mescla os dois arrays e cria um novo array e ai esse novo array vai para
         # dentro do atributo options, como um sub array
         $this -> options = array_merge($this->defaults, $opts);
 
         $config = array(
-            "tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/",
+            "tpl_dir"       => $_SERVER["DOCUMENT_ROOT"].$tpl_dir,
             "cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
             "debug"         => false,
         );
