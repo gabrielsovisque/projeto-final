@@ -15,6 +15,8 @@ class Page {
     // é aqui que vamos definir as chaves que vão difir todos os sub arrays que o atributo optons
     // vai ter
     private $defaults = [
+        "header" => true,
+        "footer" => true,
         "data"=>[]
     ];
 
@@ -38,7 +40,7 @@ class Page {
         # cada nome da variavel e seu valor que vão ser inseridos na pagina, vão passar por aqui
         # ou seja cada chave vai la no html como 
         $this -> setData($this-> options["data"]);
-        $this -> tpl -> draw("header");
+        if($this -> options["header"] === true) $this -> tpl -> draw("header");
 
         
 
@@ -59,7 +61,7 @@ class Page {
     }
 
     public function __destruct() {
-        $this -> tpl -> draw("footer");
+        if($this -> options["footer"] === true) $this -> tpl -> draw("footer");
     }
 
 
